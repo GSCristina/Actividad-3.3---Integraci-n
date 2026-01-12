@@ -1,0 +1,32 @@
+name: Tests automáticos
+
+on:
+  push:
+    branches: [ "principal", "main" ] 
+
+jobs:
+  test:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+          
+      - name: Verifica con Maven
+        run: mvn --batch-mode --update-snapshots verify --file pom.xml
+
+      - name: Report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Informe de tests
+          path: target/surefire-reports/*.xml
+          reporter: java-junit
+          fail-on-error: true
