@@ -1,3 +1,7 @@
 target/
 .idea/
 *.iml
+# Maven target folder
+target/
+# IntelliJ folder
+.idea/
