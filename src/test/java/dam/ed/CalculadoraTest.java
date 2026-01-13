@@ -18,7 +18,8 @@ class CalculadoraTest {
      @Test
     @DisplayName("Suma de enteros")
     void testSumaEnteros() throws Exception {
-        assertEquals(4, miCalculadora.suma(2,2));   
+        assertEquals(4, miCalculadora.suma(2,2)); 
+        assertEquals(5, miCalculadora.suma(2,2));
     }
     
     @Test
@@ -50,4 +51,5 @@ class CalculadoraTest {
         assertEquals("El divisor es 0", thrown.getMessage());
     }
 }
+
 
